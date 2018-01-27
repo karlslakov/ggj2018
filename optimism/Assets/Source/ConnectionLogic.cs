@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ConnectionLogic : MonoBehaviour {
 
@@ -51,7 +50,7 @@ public class ConnectionLogic : MonoBehaviour {
         if (createPlayer)
         {
             Debug.Log("Creating player");
-            PhotonNetwork.InstantiateSceneObject("Circle", Vector3.zero, Quaternion.identity, 0, null);
+            PhotonNetwork.InstantiateSceneObject("Player", Vector3.zero, Quaternion.identity, 0, null);
         }
     }
 }
