@@ -11,6 +11,14 @@ public class PlayerHealth : PunBehaviour {
         HealthBar = GameObject.Find("HealthFull").GetComponent<RectTransform>();
         baseSizeDelta = HealthBar.sizeDelta;
 	}
+
+	void OnCollisionEnter2D(Collision2D coll){
+		Debug.Log ("collide! "+coll.gameObject.name);
+		if (coll.gameObject.tag == "Hazard") {
+			//Player takes damage or whatever
+		}
+
+	}
 	
 	void Update () {
         if (Input.GetKeyDown("k"))
