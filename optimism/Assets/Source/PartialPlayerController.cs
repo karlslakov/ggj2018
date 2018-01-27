@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class PartialPlayerController : PunBehaviour {
 
+	public float speed = 1f;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -10,18 +12,9 @@ public class PartialPlayerController : PunBehaviour {
 	
 	
     void Update () {
-        float speed = 1f;
         Vector3 move = Vector3.zero;
-
-        if (Input.GetKey(KeyCode.D))
-            move += new Vector3(speed * Time.deltaTime, 0.0f, 0.0f);
-        if (Input.GetKey(KeyCode.A))
-            move -= new Vector3(speed * Time.deltaTime, 0.0f, 0.0f);
-        if (Input.GetKey(KeyCode.W))
-            move += new Vector3(0.0f, speed * Time.deltaTime, 0.0f);
-        if (Input.GetKey(KeyCode.S))
-            move -= new Vector3(0.0f, speed * Time.deltaTime, 0.0f);
-        
+		move += new Vector3(speed * Time.deltaTime * Input.GetAxisRaw ("Horizontal"), 0.0f, 0.0f);
+		move += new Vector3(0.0f, speed * Time.deltaTime * Input.GetAxisRaw ("Vertical"), 0.0f);
         photonView.RPC("Move", PhotonTargets.All, move);
     }
 
