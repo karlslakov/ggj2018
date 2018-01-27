@@ -1,26 +1,56 @@
 ﻿using Photon;
 using UnityEngine;
 
-public class PartialPlayerController : PunBehaviour {
+public class PartialPlayerController : PunBehaviour
+{
 
-	public float speed = 1f;
+    public float speed = 1f;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	
-    void Update () {
-        Vector3 move = Vector3.zero;
-		move += new Vector3(speed * Time.deltaTime * Input.GetAxisRaw ("Horizontal"), 0.0f, 0.0f);
-		move += new Vector3(0.0f, speed * Time.deltaTime * Input.GetAxisRaw ("Vertical"), 0.0f);
-        photonView.RPC("Move", PhotonTargets.All, move);
+    Vector2 influence;
+    
+
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.isWriting)
+        {
+            
+        }
+        else
+        {
+            
+        }
+    }
+
+    void Update()
+    {
+        Vector2 move = Vector2.zero;
+        move += new Vector2(speed * Time.deltaTime * Input.GetAxisRaw("Horizontal"), 0.0f);
+        move += new Vector2(0.0f, speed * Time.deltaTime * Input.GetAxisRaw("Vertical"));
+
+        if (!photonView.isMine)
+        {
+            if (Input.GetKeyDown("j"))
+            {
+                photonView.RequestOwnership();
+            }
+        }
+
+        if (photonView.isMine)
+        {
+            move += influence;
+            transform.position += new Vector3(move.x, move.y);
+        }
+        else
+        {
+            photonView.RPC("AcceptMoveInfluence", PhotonTargets.All, move);
+        }
+        influence = Vector2.zero;
     }
 
     [PunRPC]
-    public void Move(Vector3 move)
+    public void AcceptMoveInfluence(Vector2 move)
     {
-        transform.position += move;
+        influence += move;
     }
 }

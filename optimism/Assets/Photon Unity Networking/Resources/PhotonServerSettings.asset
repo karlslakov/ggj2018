@@ -39,4 +39,5 @@ MonoBehaviour:
   - RequestForPickupTimes
   - Move
   - Dmg
+  - AcceptMoveInfluence
   DisableAutoOpenWizard: 1
