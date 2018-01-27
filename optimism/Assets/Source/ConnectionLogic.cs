@@ -51,6 +51,26 @@ public class ConnectionLogic : MonoBehaviour {
         {
             Debug.Log("Creating player");
             PhotonNetwork.InstantiateSceneObject("Player", Vector3.zero, Quaternion.identity, 0, null);
+            LocalState.PlayerType = PlayerType.Optimist;
         }
+        else
+        {
+            LocalState.PlayerType = PlayerType.Pessimist;
+        }
+
+        SetVisible();
+    }
+
+    void SetVisible()
+    {
+        if (LocalState.PlayerType == PlayerType.Optimist)
+        {
+            Camera.main.cullingMask = LayerMask.GetMask("Optimist", "Default", "UI");
+        }
+        else
+        {
+            Camera.main.cullingMask = LayerMask.GetMask("Pessimist", "Default", "UI");
+        }
+
     }
 }

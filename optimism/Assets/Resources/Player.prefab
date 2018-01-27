@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 114094655981345750}
   - component: {fileID: 114497241167202858}
   - component: {fileID: 114341063090593754}
+  - component: {fileID: 114543927989965732}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -145,6 +146,17 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
+--- !u!114 &114543927989965732
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1172725326773382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64f9d471f047368479445c4820c5acc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212493963323151750
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -179,12 +191,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5f11e2555139838419dd9acf9347e93a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 00c4cf15632f23e47a04d9dc42462da5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.24, y: 0.48}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
