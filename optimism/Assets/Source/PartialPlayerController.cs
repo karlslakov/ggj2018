@@ -89,6 +89,7 @@ public class PartialPlayerController : PunBehaviour
         else
             walking = false;
     }
+
     [PunRPC]
     public void AcceptMoveInfluence(Vector2 move)
     {
