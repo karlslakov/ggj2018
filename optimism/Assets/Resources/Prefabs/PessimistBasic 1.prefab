@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4269069604606814}
   - component: {fileID: 212617596433096002}
   m_Layer: 9
-  m_Name: PessimistBasic
+  m_Name: PessimistBasic 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
