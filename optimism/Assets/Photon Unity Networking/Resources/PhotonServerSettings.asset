@@ -38,4 +38,5 @@ MonoBehaviour:
   - RequestForPickupItems
   - RequestForPickupTimes
   - Move
+  - Dmg
   DisableAutoOpenWizard: 1
