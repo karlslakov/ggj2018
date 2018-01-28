@@ -57,6 +57,7 @@ public class ConnectionLogic : MonoBehaviour {
         {
             LocalState.PlayerType = PlayerType.Pessimist;
         }
+        Camera.main.gameObject.AddComponent<CameraEffect>();
 
         SetVisible();
     }
