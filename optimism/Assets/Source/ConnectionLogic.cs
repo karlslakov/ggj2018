@@ -4,6 +4,9 @@ public class ConnectionLogic : MonoBehaviour {
 
     bool attemptedToConnect = false;
     bool createPlayer = false;
+    bool createdLight = false;
+
+    public GameObject PointLightBase;
 
     void Start()
     {
@@ -16,6 +19,23 @@ public class ConnectionLogic : MonoBehaviour {
         {
             attemptedToConnect = true;
             PhotonNetwork.ConnectUsingSettings(2 + "." + SceneManagerHelper.ActiveSceneBuildIndex);
+        }
+        if (!createdLight)
+        {
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            if (player != null)
+            {
+                GameObject pointlight = GameObject.Instantiate(PointLightBase, player.transform);
+                pointlight.transform.localPosition = new Vector3(0, 0, -1);
+                Light light = pointlight.GetComponent<Light>();
+                light.type = LightType.Point;
+                switch (LocalState.PlayerType)
+                {
+                    case PlayerType.Optimist: light.range = 12; light.intensity = 1.4f; break;
+                    case PlayerType.Pessimist: light.range = 3; light.intensity = 2; break;
+                }
+                createdLight = true;
+            }
         }
     }
 
@@ -58,7 +78,7 @@ public class ConnectionLogic : MonoBehaviour {
         {
             LocalState.PlayerType = PlayerType.Pessimist;
         }
-        Camera.main.gameObject.AddComponent<CameraEffect>();
+        //Camera.main.gameObject.AddComponent<CameraEffect>();
 
         SetVisible();
     }
