@@ -52,6 +52,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c1bc82506bcbfc458463df4dcf4f9ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PointLightBase: {fileID: 1116258403788464, guid: ec89b3841f4934048b6f086469c88be3,
+    type: 2}
 --- !u!114 &114694088507363142
 MonoBehaviour:
   m_ObjectHideFlags: 1
