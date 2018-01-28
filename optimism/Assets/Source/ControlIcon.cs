@@ -4,12 +4,14 @@ using UnityEngine.UI;
 public class ControlIcon : MonoBehaviour {
 
     GameObject player;
-    PlayerType current = PlayerType.Optimist;
+    PlayerType current = PlayerType.Pessimist;
     Image image;
+
+    Animator animator;
 
 	void Start () {
         image = GetComponent<Image>();
-        SwapType();
+        animator = GetComponent<Animator>();
 	}
 	
 	
@@ -36,12 +38,12 @@ public class ControlIcon : MonoBehaviour {
         if (current == PlayerType.Optimist)
         {
             current = PlayerType.Pessimist;
-            image.color = Color.blue;
         }
         else
         {
             current = PlayerType.Optimist;
-            image.color = Color.yellow;
         }
+
+        animator.SetTrigger("flip");
     }
 }

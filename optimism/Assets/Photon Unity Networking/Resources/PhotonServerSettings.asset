@@ -42,4 +42,5 @@ MonoBehaviour:
   - AcceptMoveInfluence
   - ExpendTakeover
   - SetTakeovers
+  - Attack
   DisableAutoOpenWizard: 1

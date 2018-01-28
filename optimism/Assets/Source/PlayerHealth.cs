@@ -23,7 +23,9 @@ public class PlayerHealth : PunBehaviour {
 	void Update () {
         if (Input.GetKeyDown("k"))
             photonView.RPC("Dmg", PhotonTargets.AllBufferedViaServer, 10f);
-	}
+        if (Input.GetKeyDown("p"))
+            PhotonNetwork.InstantiateSceneObject("ShadowMonster", Vector3.zero, Quaternion.identity, 0, null);
+    }
 
     [PunRPC]
     public void Dmg(float amount)

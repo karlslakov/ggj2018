@@ -13,8 +13,7 @@ public class PartialPlayerController : PunBehaviour
 
     int facingParamId = Animator.StringToHash("Facing");
     int walkingParamId = Animator.StringToHash("Walking");
-    
-    
+        
     void Start()
     {
         animator = GetComponent<Animator>();
