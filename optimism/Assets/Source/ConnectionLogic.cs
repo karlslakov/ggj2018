@@ -18,7 +18,7 @@ public class ConnectionLogic : MonoBehaviour {
         if (!attemptedToConnect)
         {
             attemptedToConnect = true;
-            PhotonNetwork.ConnectUsingSettings(1 + "." + SceneManagerHelper.ActiveSceneBuildIndex);
+            PhotonNetwork.ConnectUsingSettings(2 + "." + SceneManagerHelper.ActiveSceneBuildIndex);
         }
         if (!createdLight)
         {
