@@ -43,14 +43,6 @@ public class PartialPlayerController : PunBehaviour
 
         move += new Vector2(horizontal, vertical) * speed * Time.deltaTime;
 
-        if (!photonView.isMine)
-        {
-            if (Input.GetKeyDown("j"))
-            {
-                photonView.RequestOwnership();
-            }
-        }
-
         if (photonView.isMine)
         {
             move += influence;

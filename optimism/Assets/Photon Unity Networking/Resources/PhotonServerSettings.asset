@@ -40,4 +40,6 @@ MonoBehaviour:
   - Move
   - Dmg
   - AcceptMoveInfluence
+  - ExpendTakeover
+  - SetTakeovers
   DisableAutoOpenWizard: 1
