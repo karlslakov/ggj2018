@@ -38,6 +38,7 @@ public class PlayerTakeover : PunBehaviour
     {
         takeoversRemaining = takeovers;
 
+        if (takeoverTracker == null) return;
 
         if (LocalState.PlayerType == PlayerType.Optimist)
         {

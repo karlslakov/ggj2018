@@ -1,5 +1,6 @@
 ﻿using Photon;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : PunBehaviour {
 
@@ -32,6 +33,15 @@ public class PlayerHealth : PunBehaviour {
     {
         healthPct -= amount;
         HealthBar.sizeDelta = new Vector2(baseSizeDelta.x * healthPct / 100f, baseSizeDelta.y);
+        if (isDead())
+        {
+            GetComponent<PartialPlayerController>().Die();
+        }
+    }
+
+    public bool isDead()
+    {
+        return healthPct <= 0;
     }
 
 }

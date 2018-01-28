@@ -1,9 +1,9 @@
 ﻿using Photon;
+using System.Collections;
 using UnityEngine;
 
 public class PartialPlayerController : PunBehaviour
 {
-
     public float speed = 1f;
     Vector2 influence;
     Animator animator;
@@ -86,5 +86,23 @@ public class PartialPlayerController : PunBehaviour
     public void AcceptMoveInfluence(Vector2 move)
     {
         influence += move;
+    }
+
+    public void Die()
+    {
+        enabled = false;
+        animator.SetBool(walkingParamId, false);
+        GetComponent<PlayerTakeover>().enabled = false;
+        StartCoroutine("delayInvisible");
+    }
+
+    private IEnumerator delayInvisible()
+    {
+        yield return new WaitForSeconds(0.3f);
+        GetComponent<SpriteRenderer>().enabled = false;
+     
+        yield return new WaitForSeconds(2f);
+        PhotonNetwork.LoadLevel("mainscene");
+        yield break;
     }
 }

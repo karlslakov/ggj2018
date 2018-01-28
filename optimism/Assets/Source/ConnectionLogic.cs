@@ -3,7 +3,7 @@
 public class ConnectionLogic : MonoBehaviour {
 
     bool attemptedToConnect = false;
-    bool createPlayer = false;
+    bool createdPlayer = false;
     bool createdLight = false;
 
     public GameObject PointLightBase;
@@ -15,11 +15,24 @@ public class ConnectionLogic : MonoBehaviour {
 
     void Update()
     {
+        if (PhotonNetwork.connected && !attemptedToConnect)
+        {
+            attemptedToConnect = true;
+            SetVisible();
+        }
+
         if (!attemptedToConnect)
         {
             attemptedToConnect = true;
             PhotonNetwork.ConnectUsingSettings(2 + "." + SceneManagerHelper.ActiveSceneBuildIndex);
         }
+
+        if (PhotonNetwork.isMasterClient && !createdPlayer)
+        {
+            createdPlayer = true;
+            PhotonNetwork.InstantiateSceneObject("Player", Vector3.zero, Quaternion.identity, 0, null);
+        }
+
         if (!createdLight)
         {
             GameObject player = GameObject.FindGameObjectWithTag("Player");
@@ -55,7 +68,6 @@ public class ConnectionLogic : MonoBehaviour {
     {
         Debug.Log("Creating room...");
         PhotonNetwork.CreateRoom(null, new RoomOptions() { MaxPlayers = 2 }, null);
-        createPlayer = true;
     }
 
 
@@ -67,11 +79,9 @@ public class ConnectionLogic : MonoBehaviour {
     void OnJoinedRoom()
     {
         Debug.Log("Joined room.");
-        if (createPlayer)
+
+        if (PhotonNetwork.isMasterClient)
         {
-            Debug.Log("Creating player");
-            PhotonNetwork.InstantiateSceneObject("Player", Vector3.zero, Quaternion.identity, 0, null);
-            //PhotonNetwork.InstantiateSceneObject("ShadowMonster", new Vector3(-3, 2), Quaternion.identity, 0, null);
             LocalState.PlayerType = PlayerType.Optimist;
         }
         else
