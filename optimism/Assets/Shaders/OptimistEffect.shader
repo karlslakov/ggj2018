@@ -44,8 +44,9 @@
 				fixed4 col = tex2D(_MainTex, i.uv);
 
 				float d = distance(i.uv, 0.5f);
-				d *= 0.7;
+				d *= 0.6;
 				col.rgb = col.rgb * (1.4 - d) * (1.3 - d);
+				col.rgb = saturate(col.rgb);
 
 				return col;
 			}

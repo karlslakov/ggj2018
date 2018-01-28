@@ -13,8 +13,7 @@ public class PartialPlayerController : PunBehaviour
 
     int facingParamId = Animator.StringToHash("Facing");
     int walkingParamId = Animator.StringToHash("Walking");
-    
-    
+        
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -42,14 +41,6 @@ public class PartialPlayerController : PunBehaviour
         float vertical = Input.GetAxisRaw("Vertical");
 
         move += new Vector2(horizontal, vertical) * speed * Time.deltaTime;
-
-        if (!photonView.isMine)
-        {
-            if (Input.GetKeyDown("j"))
-            {
-                photonView.RequestOwnership();
-            }
-        }
 
         if (photonView.isMine)
         {

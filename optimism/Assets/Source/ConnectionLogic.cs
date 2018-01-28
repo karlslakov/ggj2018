@@ -51,6 +51,7 @@ public class ConnectionLogic : MonoBehaviour {
         {
             Debug.Log("Creating player");
             PhotonNetwork.InstantiateSceneObject("Player", Vector3.zero, Quaternion.identity, 0, null);
+            //PhotonNetwork.InstantiateSceneObject("ShadowMonster", new Vector3(-3, 2), Quaternion.identity, 0, null);
             LocalState.PlayerType = PlayerType.Optimist;
         }
         else
