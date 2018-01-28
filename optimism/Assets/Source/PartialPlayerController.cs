@@ -18,6 +18,7 @@ public class PartialPlayerController : PunBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+        Camera.main.transform.parent = transform;
     }
     
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
@@ -54,7 +55,7 @@ public class PartialPlayerController : PunBehaviour
         {
             move += influence;
             FaceAndWalk(move);
-            transform.position += new Vector3(move.x, move.y);
+            GetComponent<Rigidbody2D>().MovePosition(transform.position + new Vector3(move.x, move.y));
         }
         else
         {
