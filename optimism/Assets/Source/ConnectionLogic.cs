@@ -82,7 +82,7 @@ public class ConnectionLogic : MonoBehaviour {
 
         if (PhotonNetwork.isMasterClient)
         {
-            LocalState.PlayerType = PlayerType.Optimist;
+			LocalState.PlayerType = PlayerType.Pessimist;
         }
         else
         {
